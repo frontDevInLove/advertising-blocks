@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "dev": "vite",
+    "example": "vite --host --config empty.config.ts --port 3000",
     "build:lib": "tsc && vite build --mode lib",
     "build:preview": "tsc && vite build --mode preview",
     "preview": "vite preview",

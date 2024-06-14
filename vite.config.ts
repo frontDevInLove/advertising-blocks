@@ -1,24 +1,24 @@
-import {defineConfig} from 'vite';
-import { resolve } from 'path';
+import { defineConfig } from "vite";
+import { resolve } from "path";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
-import {createHtmlPlugin} from "vite-plugin-html";
-import dts from 'vite-plugin-dts'
+import { createHtmlPlugin } from "vite-plugin-html";
+import dts from "vite-plugin-dts";
 
-export default defineConfig(({ mode })  => {
-  if (mode === 'lib') {
+export default defineConfig(({ mode }) => {
+  if (mode === "lib") {
     // Конфигурация для сборки библиотеки
     return {
       plugins: [
         cssInjectedByJsPlugin(),
         dts({
-          insertTypesEntry: true
+          insertTypesEntry: true,
         }),
       ],
       build: {
         lib: {
-          entry: resolve(__dirname, 'src/main.ts'),
-          name: 'MyLibrary',
-          fileName: (format) => `my-library.${format}.js`
+          entry: resolve(__dirname, "src/main.ts"),
+          name: "MyLibrary",
+          fileName: (format) => `my-library.${format}.js`,
         },
       },
     };
@@ -30,7 +30,7 @@ export default defineConfig(({ mode })  => {
         createHtmlPlugin({
           inject: {
             data: {
-              title: 'MyLibrary Demo',
+              title: "MyLibrary Demo",
             },
           },
         }),
@@ -38,12 +38,12 @@ export default defineConfig(({ mode })  => {
       build: {
         rollupOptions: {
           input: {
-            main: resolve(__dirname, 'index.html'),
+            main: resolve(__dirname, "index.html"),
           },
           output: {
-            entryFileNames: 'assets/[name].[hash].js',
-            chunkFileNames: 'assets/[name].[hash].js',
-            assetFileNames: 'assets/[name].[hash].[ext]',
+            entryFileNames: "assets/[name].[hash].js",
+            chunkFileNames: "assets/[name].[hash].js",
+            assetFileNames: "assets/[name].[hash].[ext]",
           },
         },
       },

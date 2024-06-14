@@ -1,0 +1,59 @@
+.Slider {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+
+  &__track-container {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.3s ease-in-out;
+
+    &-disable {
+      transition: none;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s ease-in-out;
+
+    &--left {
+      transform: translateY(-50%) translateX(-100%);
+      left: -100%;
+    }
+
+    &--right {
+      transform: translateY(-50%) translateX(100%);
+      right: -100%;
+    }
+  }
+
+  &:hover .Slider__button--left {
+    left: 10px;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  &:hover .Slider__button--right {
+    right: 10px;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  @media (max-width: 768px) {
+    &__button {
+      display: none;
+    }
+  }
+}
